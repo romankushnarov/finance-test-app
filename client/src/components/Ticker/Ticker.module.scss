@@ -1,0 +1,49 @@
+.ticker {
+    margin: 10px 20px 10px 0;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+
+    &_arrow {
+        min-width: 32px;
+        min-height: 32px;
+        max-width: 32px;
+        max-height: 32px;
+        display: flex;
+        margin-right: 10px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+
+    &_inner {
+        width: 100%;
+    }
+
+    &_row {
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &_name {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    &_data-red {
+        color: red;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    &_price {
+        font-size: 14px;
+    }
+}
