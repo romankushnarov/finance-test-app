@@ -37,13 +37,20 @@
         line-height: 18px;
     }
 
-    &_data-red {
-        color: red;
+    &_data {
         font-size: 14px;
         line-height: 16px;
     }
 
     &_price {
         font-size: 14px;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .green {
+        color: green;
     }
 }
