@@ -3,23 +3,22 @@ import { Ticker } from '../../components/Ticker/Ticker'
 import styles from './Home.module.scss'
 import { io } from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
-import { setItems } from '../../redux/actions/tickersActionCreator';
-import { getTickers } from '../../redux/selectors/tickersSelector';
+import { disconnect, loadItems } from '../../redux/actions/tickersActionCreator';
+import { getTickers, getIsLoaded } from '../../redux/selectors/tickersSelector';
+import { Loader } from '../../components/Loader.js/Loader';
 
 const PORT = 4000;
 
 export const Home = () => {
     const dispatch = useDispatch()
+    const isLoaded = useSelector(state => getIsLoaded(state))
     const tickers = useSelector(state => getTickers(state))
     
     useEffect(() => {
         const socket = io.connect(`http://localhost:${PORT}`)
-        socket.emit('start')
-        socket.on('ticker', data => {
-            dispatch(setItems(data))
-        })
+        dispatch(loadItems(socket))
         return () => {
-            socket.disconnect()
+            dispatch(disconnect(socket))
         }
         //eslint-disable-next-line
     }, [])
@@ -27,10 +26,11 @@ export const Home = () => {
     return (
         <div className={styles.home}>
             <div className={styles.list}>
-                {
+                { isLoaded ?
                     tickers.map((item, index) => (
                         <Ticker {...item} key={`${item.ticker}_${index}`} />
-                    ))
+                    )) :
+                    <Loader />
                 }
             </div>
         </div>
