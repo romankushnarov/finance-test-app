@@ -34,7 +34,7 @@ export const Ticker = ({ticker, price, change, change_percent}) => {
     if(oldPrice < price) {
         rotateDeg = 180
         fillColor = 'green'
-        bgColor = '##e6f4ea'
+        bgColor = '#e6f4ea'
     } else if (oldPrice > price) {
         rotateDeg = 0
         fillColor = 'red'
