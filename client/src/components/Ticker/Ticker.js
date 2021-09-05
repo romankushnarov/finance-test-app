@@ -1,5 +1,6 @@
 import styles from './Ticker.module.scss'
-import {usePrevious} from '../../hooks/usePreviousHook'
+import { usePrevious } from '../../hooks/usePreviousHook'
+import { CSSTransition } from 'react-transition-group';
 
 export const Ticker = ({ticker, price, change, change_percent}) => {
     const prevAmount = usePrevious({price, change, change_percent})
@@ -29,11 +30,11 @@ export const Ticker = ({ticker, price, change, change_percent}) => {
         changePercentSign = '+'
     }
 
-    let rotateDeg = 270
+    let rotateDeg = -90
     let fillColor = 'black'
     let bgColor = '#f8f9fa'
     if(oldPrice < price) {
-        rotateDeg = 180
+        rotateDeg = -180
         fillColor = 'green'
         bgColor = '#e6f4ea'
     } else if (oldPrice > price) {
