@@ -4,6 +4,7 @@ import {usePrevious} from '../../hooks/usePreviousHook'
 export const Ticker = ({ticker, price, change, change_percent}) => {
     const prevAmount = usePrevious({price, change, change_percent})
 
+    // due to the fact that prices, changes and change_percentages are not connected in server.js API (generated randomly), this results in a lot of code
     const oldChange = typeof prevAmount === 'undefined' ? change : prevAmount.change
     const oldChangePercent = typeof prevAmount === 'undefined' ? change_percent : prevAmount.change_percent
     const oldPrice = typeof prevAmount === 'undefined' ? price : prevAmount.price
