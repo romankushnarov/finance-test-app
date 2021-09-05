@@ -1,8 +1,9 @@
+import React from 'react'
 import styles from './Ticker.module.scss'
 import { usePrevious } from '../../hooks/usePreviousHook'
-import { CSSTransition } from 'react-transition-group';
 
-export const Ticker = ({ticker, price, change, change_percent}) => {
+export const Ticker = React.memo(({ticker, price, change, change_percent, clickHandler}) => {
+
     const prevAmount = usePrevious({price, change, change_percent})
 
     // due to the fact that prices, changes and change_percentages are not connected in server.js API (generated randomly), this results in a lot of code
@@ -45,6 +46,10 @@ export const Ticker = ({ticker, price, change, change_percent}) => {
 
     return (
         <div className={styles.ticker}>
+            <button 
+                className={styles.ticker_btn}
+                onClick={() => clickHandler(ticker)}
+            >&times;</button>
             <div className={styles['ticker_arrow']} style={{background: `${bgColor}`}}>
                 <svg width="16" height="16" viewBox="0 0 24 24" focusable="false" fill={fillColor} style={{transform: `rotate(${rotateDeg}deg)`}}>
                     <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
@@ -62,4 +67,4 @@ export const Ticker = ({ticker, price, change, change_percent}) => {
             </div>
         </div>
     )
-}
+})

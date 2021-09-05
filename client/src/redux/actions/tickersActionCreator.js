@@ -1,4 +1,4 @@
-import {SET_ITEMS, SET_IS_LOADED} from '../types'
+import {SET_ITEMS, SET_IS_LOADED, FOLLOW_TICKER, UNFOLLOW_TICKER} from '../types'
 
 const setItems = (items) => ({
     type: SET_ITEMS,
@@ -8,6 +8,15 @@ const setItems = (items) => ({
 const setIsLoaded = (value) => ({
     type: SET_IS_LOADED,
     payload: value
+})
+
+export const followTicker = (ticker) => ({
+    type: FOLLOW_TICKER,
+    payload: ticker
+})
+export const unfollowTicker = (ticker) => ({
+    type: UNFOLLOW_TICKER,
+    payload: ticker
 })
 
 export const loadItems = (socket) => {

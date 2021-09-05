@@ -1,2 +1,4 @@
 export const SET_ITEMS = 'SET_ITEMS'
 export const SET_IS_LOADED = 'SET_IS_LOADED'
+export const FOLLOW_TICKER ='FOLLOW_TICKER'
+export const UNFOLLOW_TICKER = 'UNFOLLOW_TICKER'
